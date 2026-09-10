@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css" />
+    <title>Pixel</title>
+  </head>
+  <body>
+    <header class="navbar">
+          <span class="cart-badge" id="cartBadge">0</span>
+        </button>
+        <button class="btn btn-secondary" onclick="openModal('login')">
+          Sign In
+        </button>
+        <button class="btn btn-primary" onclick="openModal('register')">
+          Register
+        </button>
+      </div>
+    </header>
+    <div id="gallery" class="gallery"></div>
+    <footer>
+      <button id="refresh-btn">Refresh</button>
+    </footer>
+     <!-- Auth Modal -->
+    <div class="modal-overlay" id="authModal">
+      <div class="modal-box">
+        <button class="close-btn" onclick="closeModal()">&times;</button>
+
+        <div class="tab-header">
+          <button
+            class="tab-btn active"
+            id="loginTab"
+            onclick="switchTab('login')"
+          >
+            Sign In
+          </button>
+          <button
+            class="tab-btn"
+            id="registerTab"
+            onclick="switchTab('register')"
+          >
+            Register
+          </button>
+        </div>
+
+        <!-- LOGIN FORM -->
+        <form
+          id="loginForm"
+          class="auth-form"
+          onsubmit="handleAuth(event, 'login')"
+        >
+          <h3>Welcome Back</h3>
+          <p class="form-subtext">
+            Access your account or administrative portal
+          </p>
+
+          <div class="form-group">
+            <label for="loginRole">Select Access Level</label>
+            <select id="loginRole" required>
+              <option value="customer">Customer</option>
+              <option value="staff">Staff Member</option>
+              <option value="admin">Administrator</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="loginEmail">Email Address</label>
+            <input
+              type="email"
+              id="loginEmail"
+              placeholder="name@example.com"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="loginPassword">Password</label>
+            <input
+              type="password"
+              id="loginPassword"
+              placeholder="••••••••"
+              required
+            />
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">
+            Sign In
+          </button>
+        </form>
+
+        <!-- REGISTER FORM -->
+        <form
+          id="registerForm"
+          class="auth-form hidden"
+          onsubmit="handleAuth(event, 'register')"
+        >
+          <h3>Create Account</h3>
+          <p class="form-subtext">Join for fast ordering and reward points</p>
+
+          <div class="form-group">
+            <label for="registerRole">Account Role</label>
+            <select id="registerRole" required>
+              <option value="customer">Customer</option>
+              <option value="staff">Staff Member</option>
+              <option value="admin">Administrator</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="regName">Full Name</label>
+            <input
+              type="text"
+              id="regName"
+              placeholder="Alex Morgan"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="regEmail">Email Address</label>
+            <input
+              type="email"
+              id="regEmail"
+              placeholder="name@example.com"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="regPassword">Password</label>
+            <input
+              type="password"
+              id="regPassword"
+              placeholder="••••••••"
+              required
+            />
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">
+            Create Account
+          </button>
+        </form>
+      </div>
+    </div>
+    <!-- Image Viewer -->
+<div class="image-modal" id="imageModal">
+  <button class="image-close" id="imageClose">&times;</button>
+
+  <img id="modalImage" src="" alt="Dog image" />
+</div>
+    <script src="/index.js"></script>
+  </body>
+</html>

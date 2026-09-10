@@ -1,0 +1,279 @@
+body {
+  padding-bottom: 60px; /* footer height + a little breathing room */
+}
+#gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  padding: 10px;
+}
+
+.img-card {
+  text-align: center;
+  margin: 0;
+  cursor: pointer;
+}
+
+.img-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+}
+.img-card.expanded {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.img-card.expanded img {
+  width: 100%;
+  height: 100vh;
+  object-fit: contain;
+  background: #111;
+  border-radius: 12px;
+}
+/* #gallery {
+  columns: 4;
+  column-gap: 8px;
+} */
+/* #gallery img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+} */
+/* .img-card {
+  text-align: center;
+  break-inside: avoid; 
+  margin-bottom: 8px;
+} */
+
+/* .img-card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  display: block;
+} */
+
+.img-card p {
+  margin: 4px 0 0;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1rem;
+  color: #666;
+}
+#refresh-btn {
+  background-color: #666;
+  border-radius: 20px;
+}
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  height: 50px;
+  width: 100%;
+  border-radius: 10px;
+  background-color: #857575;
+}
+/* Image Viewer */
+.image-modal {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+
+  z-index: 300;
+}
+
+.image-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.image-modal img {
+  width: 100%;
+  height: 80vh;
+  object-fit: contain;
+}
+
+.image-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+
+  background: none;
+  border: none;
+  color: white;
+
+  font-size: 40px;
+  cursor: pointer;
+
+  z-index: 301;
+}
+
+.image-close:hover {
+  opacity: 0.7;
+}
+/* --- Auth Modal --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 200;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal-box {
+  background: var(--bg-card);
+  padding: 2.5rem;
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 440px;
+  position: relative;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+.close-btn {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.8rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.close-btn:hover {
+  color: var(--text-main);
+}
+
+.tab-header {
+  display: flex;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 1.8rem;
+}
+
+.tab-btn {
+  flex: 1;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  padding: 0.8rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: 0.3s;
+  font-family: inherit;
+}
+
+.tab-btn.active {
+  color: var(--accent-gold);
+  border-bottom-color: var(--accent-gold);
+}
+
+.auth-form h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.2rem;
+}
+
+.form-subtext {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 0.85rem;
+  margin-bottom: 0.4rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group select {
+  padding: 0.75rem 0.9rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  background: var(--bg-surface);
+  color: var(--text-main);
+  font-family: inherit;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: var(--accent-gold);
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Phone: 2 columns */
+/* @media (max-width: 767px) {
+  #gallery {
+    columns: 2;
+  }
+} */
+
+/* Tablet: 3 columns */
+/* @media (min-width: 768px) {
+  #gallery {
+    columns: 3;
+  }
+} */
+
+/* Desktop: 4 columns */
+/* @media (min-width: 1024px) {
+  #gallery {
+    columns: 4;
+  }
+} */
+@media (max-width: 767px) {
+  #gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .img-card.expanded {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  .img-card.expanded img {
+    height: 50vh;
+  }
+}
